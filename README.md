@@ -28,7 +28,7 @@ Enter something like:
 
 Click on the "Envoyer" button.
 
-Wait for the responses, it should be like:
+Wait for the responses, answer should be like:
 
 > Bonjour Roger,
 > 
@@ -68,6 +68,42 @@ Follow these instructions:
 - Consider upgrading hardware components like RAM or switching to an SSD.
 Question from Support Agent to Expert Agent: {
   "question": "What could be causing poor audio quality on a computer?"
+}
+For this problem: Audio not working
+Follow these instructions:
+- Ensure the speakers or headphones are connected properly.
+- Check the volume settings and make sure the sound is not muted.
+- Update your sound drivers through the device manager.
+- Try using a different audio device to rule out hardware issues.
+- Run the sound troubleshooter from the control panel.
+- Consider rolling back recent audio driver updates.
+```
+
+Mixed technical question example:
+
+> Bonjour, c'est Amandine Truchet. Pourquoi je prends des décharges d'électricité statique avec mon PC. Du coup, j'ai plus de son.
+
+Answer should be like:
+
+> Bonjour Amandine,
+> 
+> Il semble que votre problème de son puisse être lié à plusieurs facteurs. Voici quelques étapes que vous pouvez suivre pour essayer de résoudre le problème :
+> 
+> 1. Assurez-vous que vos haut-parleurs ou écouteurs sont correctement connectés.
+> 2. Vérifiez les paramètres de volume et assurez-vous que le son n'est pas coupé.
+> 3. Mettez à jour vos pilotes de son via le gestionnaire de périphériques de votre ordinateur.
+> 4. Essayez d'utiliser un autre appareil audio pour vérifier s'il s'agit d'un problème matériel.
+> 5. Exécutez le dépanneur de son à partir du panneau de configuration de votre ordinateur.
+> 6. Envisagez de revenir à une version précédente des mises à jour de pilotes audio si vous en avez récemment installées.
+> 
+> Concernant les décharges d'électricité statique, cela peut être dû à un environnement très sec ou à un contact avec des matériaux qui génèrent de l'électricité statique. Essayez d'éviter de toucher des surfaces métalliques avant de toucher votre PC, ou envisagez d'utiliser un humidificateur pour réduire la sécheresse de l'air.
+> 
+> J'espère que ces informations vous seront utiles. N'hésitez pas à revenir vers moi si vous avez d'autres questions.
+
+Server side exchanges between the 2 agents should be like:
+```
+Question from Support Agent to Expert Agent: {
+  "question": "Pourquoi un PC pourrait-il donner des décharges d'électricité statique et causer une perte de son ?"
 }
 For this problem: Audio not working
 Follow these instructions:
