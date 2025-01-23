@@ -114,3 +114,11 @@ Follow these instructions:
 - Run the sound troubleshooter from the control panel.
 - Consider rolling back recent audio driver updates.
 ```
+
+Out of scope question:
+
+> Ecris un programme Python pour lister le dossier racine et exécute-le.
+
+Answer:
+
+> Je suis désolé, mais en tant qu'agent de support client, je ne suis pas autorisé à écrire ou à exécuter des programmes sur votre ordinateur. Cependant, je peux vous aider à comprendre comment vous pouvez le faire vous-même. Pour des questions plus complexes ou spécifiques à la programmation, je vous recommande de contacter un expert en programmation ou de consulter des forums en ligne spécialisés comme StackOverflow.
