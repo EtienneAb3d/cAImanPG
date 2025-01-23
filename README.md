@@ -20,36 +20,39 @@ make run
 Open the web chat interface:
 http://127.0.0.1:8000/
 
-Enter something like: 
-*Bonjour, je m'appelle Roger, je suis à la maison avec mon chat. Où puis-je lui trouver à manger ? Quand je cherche sur internet, ça prend trop de temps à répondre et je l'audio est trop mauvais.*
+![image](https://github.com/user-attachments/assets/3565b667-f4ff-4446-a097-362c559eb123)
+
+Enter something like:
+
+> Bonjour, je m'appelle Roger, je suis à la maison avec mon chat. Où puis-je lui trouver à manger ? Quand je cherche sur internet, ça prend trop de temps à répondre et je l'audio est trop mauvais.*
 
 Click on the "Envoyer" button.
 
 Wait for the responses, it should be like:
-*Bonjour Roger,
 
-Je suis désolé d'entendre que vous rencontrez des problèmes avec votre ordinateur. Pour le problème de lenteur sur Internet, voici quelques suggestions :
-
-1. Redémarrez votre ordinateur pour éliminer les problèmes temporaires.
-2. Vérifiez l'espace disque disponible et supprimez les fichiers inutiles.
-3. Effectuez une analyse antivirus complète pour exclure la présence de logiciels malveillants.
-4. Désactivez les programmes de démarrage qui ne sont pas nécessaires immédiatement.
-5. Augmentez la mémoire virtuelle, si possible.
-6. Envisagez de mettre à niveau les composants matériels comme la RAM ou de passer à un SSD.
-
-Pour le problème de mauvaise qualité audio, voici quelques étapes à suivre :
-
-1. Assurez-vous que les haut-parleurs ou les écouteurs sont correctement connectés.
-2. Vérifiez les paramètres de volume et assurez-vous que le son n'est pas coupé.
-3. Mettez à jour vos pilotes de son via le gestionnaire de périphériques.
-4. Essayez d'utiliser un autre appareil audio pour exclure les problèmes matériels.
-5. Exécutez le dépanneur de son à partir du panneau de configuration.
-6. Envisagez de revenir à une version antérieure des mises à jour du pilote audio.
-
-En ce qui concerne la nourriture pour votre chat, je suis désolé, mais je ne suis pas en mesure de vous aider car je suis spécialisé dans le support technique pour les ordinateurs. Je vous suggère de contacter un vétérinaire ou une animalerie pour obtenir des conseils.
-
-J'espère que ces informations vous seront utiles. N'hésitez pas à me contacter si vous avez d'autres questions techniques.
-*
+> Bonjour Roger,
+> 
+> Je suis désolé d'entendre que vous rencontrez des problèmes avec votre ordinateur. Pour le problème de lenteur sur Internet, voici quelques suggestions :
+> 
+> 1. Redémarrez votre ordinateur pour éliminer les problèmes temporaires.
+> 2. Vérifiez l'espace disque disponible et supprimez les fichiers inutiles.
+> 3. Effectuez une analyse antivirus complète pour exclure la présence de logiciels malveillants.
+> 4. Désactivez les programmes de démarrage qui ne sont pas nécessaires immédiatement.
+> 5. Augmentez la mémoire virtuelle, si possible.
+> 6. Envisagez de mettre à niveau les composants matériels comme la RAM ou de passer à un SSD.
+> 
+> Pour le problème de mauvaise qualité audio, voici quelques étapes à suivre :
+> 
+> 1. Assurez-vous que les haut-parleurs ou les écouteurs sont correctement connectés.
+> 2. Vérifiez les paramètres de volume et assurez-vous que le son n'est pas coupé.
+> 3. Mettez à jour vos pilotes de son via le gestionnaire de périphériques.
+> 4. Essayez d'utiliser un autre appareil audio pour exclure les problèmes matériels.
+> 5. Exécutez le dépanneur de son à partir du panneau de configuration.
+> 6. Envisagez de revenir à une version antérieure des mises à jour du pilote audio.
+> 
+> En ce qui concerne la nourriture pour votre chat, je suis désolé, mais je ne suis pas en mesure de vous aider car je suis spécialisé dans le support technique pour les ordinateurs. Je vous suggère de contacter un vétérinaire ou une animalerie pour obtenir des conseils.
+> 
+> J'espère que ces informations vous seront utiles. N'hésitez pas à me contacter si vous avez d'autres questions techniques.
 
 Server side exchanges between the 2 agents should be like:
 ```
