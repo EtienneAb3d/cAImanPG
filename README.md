@@ -24,7 +24,7 @@ http://127.0.0.1:8000/
 
 Enter something like:
 
-> Bonjour, je m'appelle Roger, je suis à la maison avec mon chat. Où puis-je lui trouver à manger ? Quand je cherche sur internet, ça prend trop de temps à répondre et je l'audio est trop mauvais.*
+> Bonjour, je m'appelle Roger, je suis à la maison avec mon chat. Où puis-je lui trouver à manger ? Quand je cherche sur internet, ça prend trop de temps à répondre et je l'audio est trop mauvais.
 
 Click on the "Envoyer" button.
 
