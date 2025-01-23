@@ -50,9 +50,8 @@ Wait for the responses, it should be like:
 > 5. Exécutez le dépanneur de son à partir du panneau de configuration.
 > 6. Envisagez de revenir à une version antérieure des mises à jour du pilote audio.
 > 
-> En ce qui concerne la nourriture pour votre chat, je suis désolé, mais je ne suis pas en mesure de vous aider car je suis spécialisé dans le support technique pour les ordinateurs. Je vous suggère de contacter un vétérinaire ou une animalerie pour obtenir des conseils.
+> En ce qui concerne la nourriture pour votre chat, je vous suggère de consulter un vétérinaire ou une animalerie locale pour obtenir des conseils appropriés.
 > 
-> J'espère que ces informations vous seront utiles. N'hésitez pas à me contacter si vous avez d'autres questions techniques.
 
 Server side exchanges between the 2 agents should be like:
 ```
