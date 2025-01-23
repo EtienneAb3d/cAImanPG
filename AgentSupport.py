@@ -58,7 +58,7 @@ For the content part of the client request that do not involve any technical pro
                 for tool_call in answer.tool_calls:
                     if tool_call.function.name == "ask_expert":
                         test_agent = AgentExpert()
-                        print("Analyzing...")
+                        print(f"Question from Support Agent to Expert Agent: {str(tool_call.function.arguments)}")
                         answer = test_agent.get_technical_answer(tool_call.function.arguments)
                         print(answer)
                         tool_result: ChatCompletionToolMessageParam = {
