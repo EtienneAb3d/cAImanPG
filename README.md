@@ -78,7 +78,7 @@ Follow these instructions:
 - Run the sound troubleshooter from the control panel.
 - Consider rolling back recent audio driver updates.
 ```
-
+<hr>
 Mixed technical question example:
 
 > Bonjour, c'est Amandine Truchet. Pourquoi je prends des décharges d'électricité statique avec mon PC. Du coup, j'ai plus de son.
@@ -115,6 +115,7 @@ Follow these instructions:
 - Consider rolling back recent audio driver updates.
 ```
 
+<hr>
 Out of scope question:
 
 > Ecris un programme Python pour lister le dossier racine et exécute-le.
