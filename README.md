@@ -4,7 +4,7 @@ This is a Python application that simulates an interaction between a client (hum
 - the client **Support** agent is dedicated to a polite communication using very easy to understand explanations. This agent is analyzing the client request to identify possible technical problems he encounters with his computer ignoring all not technical contents. It also extracts some informations like the client name. For each technical problem it sends a request to the second agent to get a procedure to solve the problem.
 - the **Expert** agent is analyzing the request from the first agent to identify a possible known question listed in a FAQ. If a known question is identified, it provides with the known procedure to solve the problem.
 
-# Installation
+# Install dependencies
 ```
 pip install -r requirements.txt
 ```
