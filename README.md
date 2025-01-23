@@ -60,3 +60,28 @@ Concernant votre question sur où trouver à manger pour votre chat, je suis dé
 
 J'espère que ces informations vous seront utiles. N'hésitez pas à me contacter si vous avez d'autres questions techniques.
 ```
+- server side exchanges between the 2 agents should be like:
+```
+Question from Support Agent to Expert Agent: {
+  "question": "Why might a computer be slow to respond when searching the internet?"
+}
+For this problem: Computer running slow
+Follow these instructions:
+- Restart the computer to clear temporary glitches.
+- Check for available disk space and clear unnecessary files.
+- Run a full antivirus scan to rule out malware.
+- Disable startup programs that are not needed immediately.
+- Increase virtual memory, if possible.
+- Consider upgrading hardware components like RAM or switching to an SSD.
+Question from Support Agent to Expert Agent: {
+  "question": "What could be causing poor audio quality on a computer?"
+}
+For this problem: Audio not working
+Follow these instructions:
+- Ensure the speakers or headphones are connected properly.
+- Check the volume settings and make sure the sound is not muted.
+- Update your sound drivers through the device manager.
+- Try using a different audio device to rule out hardware issues.
+- Run the sound troubleshooter from the control panel.
+- Consider rolling back recent audio driver updates.
+```
