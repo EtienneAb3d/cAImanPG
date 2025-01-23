@@ -36,19 +36,19 @@ http://127.0.0.1:8000/docs#/default/chat_chat_post
 200	
 Response body
 
-Bonjour Roger, 
+Bonjour Roger,
 
-Je suis désolé d'apprendre que vous rencontrez des problèmes avec votre ordinateur. Voici quelques suggestions pour résoudre les problèmes que vous avez mentionnés.
+Je suis désolé d'apprendre que vous rencontrez des problèmes avec votre ordinateur. Pour le problème de lenteur lors de la recherche sur Internet, voici quelques suggestions :
 
-Pour le problème de lenteur de votre ordinateur lors de la recherche sur Internet, vous pouvez essayer les étapes suivantes :
 1. Redémarrez votre ordinateur pour éliminer les problèmes temporaires.
 2. Vérifiez l'espace disque disponible et supprimez les fichiers inutiles.
 3. Effectuez une analyse antivirus complète pour exclure la présence de logiciels malveillants.
 4. Désactivez les programmes de démarrage qui ne sont pas nécessaires immédiatement.
 5. Augmentez la mémoire virtuelle, si possible.
-6. Envisagez de mettre à niveau les composants matériels comme la RAM ou de passer à un SSD.
+6. Envisagez de mettre à niveau des composants matériels comme la RAM ou de passer à un SSD.
 
-En ce qui concerne le problème de la mauvaise qualité audio, voici quelques étapes que vous pouvez essayer :
+Pour le problème de mauvaise qualité audio, voici quelques étapes à suivre :
+
 1. Assurez-vous que les haut-parleurs ou les écouteurs sont correctement connectés.
 2. Vérifiez les paramètres de volume et assurez-vous que le son n'est pas coupé.
 3. Mettez à jour vos pilotes de son via le gestionnaire de périphériques.
@@ -56,5 +56,7 @@ En ce qui concerne le problème de la mauvaise qualité audio, voici quelques é
 5. Exécutez le dépanneur de son à partir du panneau de configuration.
 6. Envisagez de revenir à une version précédente des mises à jour du pilote audio.
 
-J'espère que ces suggestions vous aideront à résoudre vos problèmes. Si vous avez besoin d'aide supplémentaire, n'hésitez pas à me le faire savoir.
+Concernant votre question sur où trouver à manger pour votre chat, je suis désolé mais je ne suis pas en mesure de vous aider car je suis spécialisé dans le support technique informatique. Je vous suggère de chercher sur internet ou de demander à un vétérinaire pour obtenir des conseils appropriés.
+
+J'espère que ces informations vous seront utiles. N'hésitez pas à me contacter si vous avez d'autres questions techniques.
 ```
