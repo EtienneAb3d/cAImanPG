@@ -123,3 +123,20 @@ Out of scope question:
 Answer:
 
 > Je suis désolé, mais en tant qu'agent de support client, je ne suis pas autorisé à écrire ou à exécuter des programmes sur votre ordinateur. Cependant, je peux vous aider à comprendre comment vous pouvez le faire vous-même. Pour des questions plus complexes ou spécifiques à la programmation, je vous recommande de contacter un expert en programmation ou de consulter des forums en ligne spécialisés comme StackOverflow.
+
+<hr>
+Expert doesn't know:
+
+> Mon débogueur ne s'arrête pas sur le points d'arrêt.
+
+Answer:
+
+> Je suis désolé, mais je n'ai pas pu trouver une solution exacte à votre problème. Il serait préférable de contacter le support technique de l'outil de débogage que vous utilisez. Ils seront plus à même de vous aider à résoudre ce problème spécifique.
+
+Server side exchanges between the 2 agents should be like:
+```
+Question from Support Agent to Expert Agent: {
+  "question": "Pourquoi le débogueur ne s'arrête-t-il pas sur les points d'arrêt ?"
+}
+Sorry, I couldn't find an exact match. Please contact support.
+```
