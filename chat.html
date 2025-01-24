@@ -14,8 +14,10 @@
 <body>
     <h2>Support technique informatique</h2>
     <div id="chatbox"></div>
-    <input type="text" id="message" placeholder="Tapez votre question technique...">
-    <button id="send">Envoyer</button>
+    <form action="" onsubmit="sendMessage(event)">
+        <input type="text" id="message" placeholder="Tapez votre question technique...">
+        <button id="send">Envoyer</button>
+    </form>
 
     <script>
         const ws = new WebSocket("ws://localhost:8000/ws");
@@ -33,7 +35,7 @@
             });
         };
 
-        sendButton.onclick = function() {
+        function sendMessage(event) {
             document.body.style.cursor = 'wait';
             document.querySelectorAll('input, textarea, button').forEach(el => {
                 el.style.cursor = 'wait';
@@ -45,6 +47,7 @@
             chatbox.appendChild(newMessage);
             ws.send(message);
             messageInput.value = "";
+            event.preventDefault()
         };
     </script>
 </body>
