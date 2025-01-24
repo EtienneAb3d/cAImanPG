@@ -39,6 +39,10 @@
                 el.style.cursor = 'wait';
             });
             const message = messageInput.value;
+            const newMessage = document.createElement("div");
+            newMessage.style.backgroundColor = 'lightgray';
+            newMessage.innerHTML = "Question : " + message;
+            chatbox.appendChild(newMessage);
             ws.send(message);
             messageInput.value = "";
         };
