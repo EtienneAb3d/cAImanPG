@@ -1,16 +1,16 @@
-from openai import OpenAI
-from openai.types.chat.chat_completion_tool_param import ChatCompletionToolParam
-from openai.types.chat import (
-    ChatCompletionMessageParam,
-    ChatCompletionMessage,
-    ChatCompletionToolMessageParam,
-)
-
-from Utils import load_api_key
+from Agent import Agent
 from AgentExpert import AgentExpert
 
-class AgentSupport:
-    system_prompt = """
+class AgentSupport(Agent):
+    """
+    The client Support agent is dedicated to a polite communication using very easy to understand explanations. 
+    This agent is analyzing the client request to identify possible technical problems he encounters with his computer 
+    that can be mixed with not technical contents. 
+    It also extracts some informations like the client name. For each technical problem it sends a request 
+    to the second agent to get a procedure to solve the problem.
+    """
+    def __init__(self):
+        super().__init__(system_prompt = """
 You are a client support agent in charge of answering computer technical questions.
 If the client is providing with his/her name, use it to build a polite answer.
 If there is one or several technical problem described (trouble like speed, freeze, not starting, crash, etc), for each technical problem described, do not build a response by yourself, but build a proper question to ask to a technical expert using the available function.
@@ -18,72 +18,31 @@ Using the technical expert responses, build a very comprehensive response with u
 If the client message contains very ordinary everyday life problem descriptions or questions (cooking, time management, transportation, etc), build a small response for it.
 If the client message contains hard or sensitive problem descriptions or questions (politics, sex, religion, health, programming, etc) kindly explain you are only answering technical computer questions and provide some suggestions about persons to contact for these cases.
 If the client content do not mention any computer technical problem or trouble invite to give more explanation related to a technical problem.
-"""
+""")
 
-    available_functions: list[ChatCompletionToolParam] = [
-        {
-            "type": "function",
-            "function": {
+        self.available_functions: list = [
+            {
                 "name": "ask_expert",
                 "description": "Send a question in natural language to a computer technical expert.",
-                "parameters": {"type": "object", "properties": {
-                    "question" : {
-                        "type":"string",
-                        "description":"A single technical question the expert should answer.",
-                        },
-                    }, "required": ["question"]},
+                "question_description":"A single technical question the expert should answer.",
             },
-        },
-    ]
-
-    def __init__(self):
-        self.openai = OpenAI(api_key=load_api_key(file_path='openai_api_key.txt'))
-
-    async def start_chat(self, question: str):
-        answer: str | ChatCompletionMessage | None = None
-
-        messages: list[ChatCompletionMessageParam] = [
-            {"role": "system", "content": self.system_prompt},
-            {"role": "user", "content": question},
         ]
 
-        msgs = []
+    def chat_assistant(self, question: str) -> str:
+        answer = super().chat_assistant(
+            question=question, 
+            available_functions=self.available_functions,
+            )
+        
+        if answer is not None:
+            return answer+"\n\n"
 
-        while True:
-            answer = self.chat_assistant(messages, self.available_functions)
-            messages.append(answer)  # type: ignore
-            if answer.content is not None:
-                yield answer.content+"\n\n"
-            if answer.tool_calls and len(answer.tool_calls) > 0:
-                result = []
-                for tool_call in answer.tool_calls:
-                    if tool_call.function.name == "ask_expert":
-                        test_agent = AgentExpert()
-                        print(f"Question from Support Agent to Expert Agent: {str(tool_call.function.arguments)}")
-                        answer = test_agent.get_technical_answer(tool_call.function.arguments)
-                        print(answer)
-                        tool_result: ChatCompletionToolMessageParam = {
-                            "tool_call_id": tool_call.id,
-                            "role": "tool",
-                            "content": answer,
-                        }
-                        result.append(tool_result)
-                messages.extend(result)
-            else:
-                break
+        return "Internal trouble: no answer produced."
     
-    def chat_assistant(
-        self,
-        messages: list[ChatCompletionMessageParam],
-        tools: list[ChatCompletionToolParam],
-    ) -> ChatCompletionMessage:
-        response = self.openai.chat.completions.create(
-            model="gpt-4",
-            messages=messages,
-            tools=tools,
-            temperature=0,
-        )
-
-        assistant_answer = response.choices[0].message
-
-        return assistant_answer
+    def tool_call(self,function_name:str,question:str) -> str:
+        if function_name == "ask_expert":
+            test_agent = AgentExpert()
+            print(f"Question from Support Agent to Expert Agent: {question}")
+            answer = test_agent.chat_assistant(question)
+            print(answer)
+        return answer

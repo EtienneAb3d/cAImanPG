@@ -30,13 +30,11 @@ async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
     try:
         while True:
-            request = await websocket.receive_text()
+            question = await websocket.receive_text()
             agent = AgentSupport()
-            chunks = []
-            async for answer in agent.start_chat(request):
-                print(f"Support answer:\n{answer}")
-                chunks.append(answer)
-            formatted = re.sub("\n","<br>","".join(chunks))
+            answer = agent.chat_assistant(question)
+            print(f"Support answer:\n{answer}")
+            formatted = re.sub("\n","<br>",answer)
             await websocket.send_text(f"{formatted}")
     except Exception as e:
         print(f"Client disconnected: {e}")

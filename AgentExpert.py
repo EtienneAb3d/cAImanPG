@@ -1,60 +1,46 @@
-import openai
 import json
 import re
-from Utils import load_api_key
+from Agent import Agent
 
-class AgentExpert:
+class AgentExpert(Agent):
+    """
+    the Expert agent is analyzing the request from the first agent to identify a possible known question listed in a FAQ. 
+    If a known question is identified, it provides with the known procedure to solve the problem.
+    """
     def __init__(self):
-        self.api_key = load_api_key('openai_api_key.txt')
+        super().__init__("You are an AI assistant that maps user questions in natural language to the best predefined FAQ questions.")
         self.faq_data = self.load_faq('data_test_python.json')
-        openai.api_key = self.api_key
+        self.not_found = "Sorry, I couldn't find an exact match. Please contact support."
 
-    def load_faq(self, file_path):
+    def load_faq(self, file_path:str):
         with open(file_path, 'r') as file:
             return json.load(file)
 
-    def map_question_to_faq(self, user_question):
+    def chat_assistant(self, user_question:str) -> str:
         """
         Maps a user's natural language question to a preset FAQ question.
         :param user_question: str, user's technical question
-        :return: str, mapped FAQ question or None
+        :return: str, mapped FAQ answer or not_found string
         """
         try:
+            # This part could be replaced by a Live database call
             known_questions = []
             known_answers = {}
             for scenario in self.faq_data["troubleshooting_scenarios"]:
                 known_questions.append(scenario['issue'])
                 known_answers[scenario['issue']] = scenario['steps']
-            messages=[
-                    {"role": "system", "content": "You are an AI assistant that maps user questions in natural language to the best predefined FAQ questions."},
-                    {"role": "user", "content": f"Which FAQ question does this match: '{user_question}'? Choose the best string from this list and provide it enclosed between <> markers: \n{"\n".join(known_questions)}"}
-                ]
-            response = openai.chat.completions.create(
-                model="gpt-4",
-                messages=messages,
-                max_tokens=100,
-                temperature=0.3
-            )
+
+            answer = super().chat_assistant(
+                question=f"Which FAQ question does this match: '{user_question}'? Choose the best string from this list and provide it enclosed between <> markers: \n{"\n".join(known_questions)}",
+                )
             
-            mapped_question = response.choices[0].message.content.strip()
+            mapped_question = answer.strip()
             if not mapped_question:
-                return None
+                return self.not_found
             mapped_question = re.sub(r'(^.*<|>.*$)',"",mapped_question)
             if mapped_question not in known_questions:
-                return None
+                return self.not_found
             return f"For this problem: {mapped_question}\nFollow these instructions:\n- {"\n- ".join(known_answers[mapped_question])}"
         except Exception as e:
-            return None
-
-    def get_technical_answer(self, user_question):
-        """
-        Gets technical support answers using a local FAQ or AI.
-        :param user_question: str, user's technical question
-        :return: str, answer to the question
-        """
-        mapped_question = self.map_question_to_faq(user_question)
-        if mapped_question:
-            return mapped_question
-        
-        return "Sorry, I couldn't find an exact match. Please contact support."
+            return self.not_found
 

@@ -55,9 +55,7 @@ Wait for the responses, answer should be like:
 
 Server side exchanges between the 2 agents should be like:
 ```
-Question from Support Agent to Expert Agent: {
-  "question": "Why might a computer be slow to respond when searching the internet?"
-}
+Question from Support Agent to Expert Agent: Why might a computer be slow to respond when searching the internet?
 For this problem: Computer running slow
 Follow these instructions:
 - Restart the computer to clear temporary glitches.
@@ -66,9 +64,7 @@ Follow these instructions:
 - Disable startup programs that are not needed immediately.
 - Increase virtual memory, if possible.
 - Consider upgrading hardware components like RAM or switching to an SSD.
-Question from Support Agent to Expert Agent: {
-  "question": "What could be causing poor audio quality on a computer?"
-}
+Question from Support Agent to Expert Agent: What could be causing poor audio quality on a computer?
 For this problem: Audio not working
 Follow these instructions:
 - Ensure the speakers or headphones are connected properly.
@@ -102,9 +98,7 @@ Answer should be like:
 
 Server side exchanges between the 2 agents should be like:
 ```
-Question from Support Agent to Expert Agent: {
-  "question": "Pourquoi un PC pourrait-il donner des décharges d'électricité statique et causer une perte de son ?"
-}
+Question from Support Agent to Expert Agent: Pourquoi un PC pourrait-il donner des décharges d'électricité statique et causer une perte de son ?
 For this problem: Audio not working
 Follow these instructions:
 - Ensure the speakers or headphones are connected properly.
@@ -135,8 +129,6 @@ Answer:
 
 Server side exchanges between the 2 agents should be like:
 ```
-Question from Support Agent to Expert Agent: {
-  "question": "Pourquoi le débogueur ne s'arrête-t-il pas sur les points d'arrêt ?"
-}
+Question from Support Agent to Expert Agent: Pourquoi le débogueur ne s'arrête-t-il pas sur les points d'arrêt ?
 Sorry, I couldn't find an exact match. Please contact support.
 ```
