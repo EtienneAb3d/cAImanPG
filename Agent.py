@@ -10,6 +10,9 @@ from Utils import load_api_key
 import json
 
 class Agent:
+    """
+    The Agent superclass is managing the ChatGPT logic: completion requests with or without functions.
+    """
     def __init__(self,system_prompt:str):
         self.api_key = load_api_key('openai_api_key.txt')
         openai.api_key = self.api_key
