@@ -27,7 +27,7 @@ class AgentExpert:
                 known_answers[scenario['issue']] = scenario['steps']
             messages=[
                     {"role": "system", "content": "You are an AI assistant that maps user questions in natural language to the best predefined FAQ questions."},
-                    {"role": "user", "content": f"Which FAQ question does this match: '{user_question}'? Choose the best string from this list and provide it enclosed batween <> markers: \n{"\n".join(known_questions)}"}
+                    {"role": "user", "content": f"Which FAQ question does this match: '{user_question}'? Choose the best string from this list and provide it enclosed between <> markers: \n{"\n".join(known_questions)}"}
                 ]
             response = openai.chat.completions.create(
                 model="gpt-4",
