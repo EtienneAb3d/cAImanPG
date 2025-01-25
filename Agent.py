@@ -64,8 +64,9 @@ class Agent:
                     question = json.loads(tool_call.function.arguments)["question"]
                     answer_tool = self.tool_call(tool_call.function.name,str(question))
                     tool_result: ChatCompletionToolMessageParam = {
-                        "tool_call_id": tool_call.id,
                         "role": "tool",
+                        "tool_call_id": tool_call.id,
+                        "name": tool_call.function.name,
                         "content": answer_tool,
                     }
                     result.append(tool_result)
