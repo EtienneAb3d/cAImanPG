@@ -8,7 +8,7 @@ class AgentExpert(Agent):
     If a known question is identified, it provides with the known procedure to solve the problem.
     """
     def __init__(self):
-        super().__init__("You are an AI assistant that maps user questions in natural language to the best predefined FAQ questions.")
+        super().__init__(system_prompt = "You are an AI assistant that maps user questions in natural language to the best predefined FAQ questions.")
         self.faq_data = self.load_faq('data_test_python.json')
         self.not_found = "Sorry, I couldn't find an exact match. Please contact support."
 
