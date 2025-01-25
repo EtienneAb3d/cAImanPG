@@ -75,12 +75,12 @@ If the client content do not mention any computer technical problem or trouble i
     def chat_assistant(
         self,
         messages: list[ChatCompletionMessageParam],
-        descriptions: list[ChatCompletionToolParam],
+        tools: list[ChatCompletionToolParam],
     ) -> ChatCompletionMessage:
         response = self.openai.chat.completions.create(
             model="gpt-4",
             messages=messages,
-            tools=descriptions,
+            tools=tools,
             temperature=0,
         )
 
