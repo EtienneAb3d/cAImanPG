@@ -68,6 +68,7 @@ Follow these instructions:
 - If the computer still doesn't turn on, try using a different power cable.
 - Inspect the power supply unit for any visible damage or loose connections.
 - If all else fails, consult a professional technician.
+
 Question from Support Agent to ask_cooking_expert Agent: Quels sont les étapes pour faire un hamburger maison ?
 Bien sûr, je peux vous aider avec cela. Voici une recette simple pour un hamburger maison.
 
