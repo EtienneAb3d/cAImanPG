@@ -35,7 +35,8 @@ class Agent:
                             "type":"string",
                             "description":func["question_description"],
                             },
-                        }, "required": ["question"]},
+                        },
+                        "required": ["question"]},
                 }
             }
             for func in available_functions]

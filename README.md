@@ -1,8 +1,9 @@
 ## Description
 
-This is a Python application that simulates an interaction between a client (human) and a technical support system made up of two collaborative AI agents:
-- the client **Support** agent is dedicated to a polite communication using very easy to understand explanations. This agent is analyzing the client request to identify possible technical problems he encounters with his computer that can be mixed with not technical contents. It also extracts some informations like the client name. For each technical problem it sends a request to the second agent to get a procedure to solve the problem.
-- the **Expert** agent is analyzing the request from the first agent to identify a possible known question listed in a FAQ. If a known question is identified, it provides with the known procedure to solve the problem.
+This is a Python application that simulates an interaction between a client (human) and a technical support system made up of multiple collaborative AI agents:
+- the client **Support** agent is dedicated to a polite communication using very easy to understand explanations. This agent is analyzing the client request to identify possible problems he encounters. For each problem or explicite question, it identifies a possible known Expert on the related subject, and sends a question to this Expert. If no known expert if identified, it may build a short answer for its own. It also extracts some informations like the client name.
+- the **Computer Expert** agent is analyzing the request from the first agent to identify a possible known question listed in a FAQ. If a known question is identified, it provides with the known procedure to solve the problem.
+- the **Cooking Expert** agent is analyzing the request from the first agent to suggest a recipe, may be a new created one, and suggest a wine with it.
 
 # Install dependencies
 ```
@@ -24,111 +25,71 @@ http://127.0.0.1:8000/
 
 Enter something like:
 
-> Bonjour, je m'appelle Roger, je suis à la maison avec mon chat. Où puis-je lui trouver à manger ? Quand je cherche sur internet, ça prend trop de temps à répondre et je l'audio est trop mauvais.
+> Salut, c'est Slvy. Je voudrais me faire un hamburger, mais mon PC ne s'allume pas.
 
 Click on the "Envoyer" button.
 
 Wait for the responses, answer should be like:
 
-> Bonjour Roger,
+> Bonjour Slvy,
 > 
-> Je suis désolé d'entendre que vous rencontrez des problèmes avec votre ordinateur. Pour le problème de lenteur sur Internet, voici quelques suggestions :
+> Pour votre problème d'ordinateur qui ne s'allume pas, voici quelques étapes que vous pouvez suivre :
 > 
-> 1. Redémarrez votre ordinateur pour éliminer les problèmes temporaires.
-> 2. Vérifiez l'espace disque disponible et supprimez les fichiers inutiles.
-> 3. Effectuez une analyse antivirus complète pour exclure la présence de logiciels malveillants.
-> 4. Désactivez les programmes de démarrage qui ne sont pas nécessaires immédiatement.
-> 5. Augmentez la mémoire virtuelle, si possible.
-> 6. Envisagez de mettre à niveau les composants matériels comme la RAM ou de passer à un SSD.
+> 1. Vérifiez si le câble d'alimentation est correctement connecté à l'ordinateur et à la prise de courant.
+> 2. Assurez-vous que la prise de courant fonctionne en testant un autre appareil.
+> 3. Appuyez fermement sur le bouton d'alimentation pendant au moins 5 secondes.
+> 4. Si l'ordinateur ne s'allume toujours pas, essayez d'utiliser un autre câble d'alimentation.
+> 5. Inspectez l'unité d'alimentation pour détecter tout dommage visible ou connexion lâche.
+> 6. Si tout le reste échoue, consultez un technicien professionnel.
 > 
-> Pour le problème de mauvaise qualité audio, voici quelques étapes à suivre :
+> En ce qui concerne la préparation d'un hamburger maison, voici une recette simple :
 > 
-> 1. Assurez-vous que les haut-parleurs ou les écouteurs sont correctement connectés.
-> 2. Vérifiez les paramètres de volume et assurez-vous que le son n'est pas coupé.
-> 3. Mettez à jour vos pilotes de son via le gestionnaire de périphériques.
-> 4. Essayez d'utiliser un autre appareil audio pour exclure les problèmes matériels.
-> 5. Exécutez le dépanneur de son à partir du panneau de configuration.
-> 6. Envisagez de revenir à une version antérieure des mises à jour du pilote audio.
+> 1. Préchauffez votre four à 180°C.
+> 2. Formez 4 steaks avec 500g de viande hachée de bœuf, salez et poivrez de chaque côté.
+> 3. Faites chauffer une poêle avec un peu d'huile. Une fois chaude, faites cuire les steaks pendant environ 3 minutes de chaque côté pour une cuisson à point. Ajoutez une tranche de fromage sur chaque steak et laissez fondre légèrement.
+> 4. Pendant ce temps, coupez un oignon en fines rondelles et faites-le revenir dans une autre poêle avec un peu d'huile jusqu'à ce qu'il soit doré.
+> 5. Coupez une tomate en rondelles et lavez quelques feuilles de laitue.
+> 6. Coupez 4 pains à hamburger en deux et faites-les toaster légèrement au four.
+> 7. Assemblez le hamburger : sur la base du pain, étalez un peu de ketchup, moutarde et mayonnaise. Ajoutez ensuite la laitue, une rondelle de tomate, le steak avec le fromage fondu, quelques rondelles d'oignon, puis refermez avec l'autre moitié du pain.
+> 8. Servez immédiatement, éventuellement avec des frites maison.
 > 
-> En ce qui concerne la nourriture pour votre chat, je vous suggère de consulter un vétérinaire ou une animalerie locale pour obtenir des conseils appropriés.
+> Pour accompagner ce plat, je vous suggère un vin rouge léger et fruité, comme un Beaujolais ou un Pinot Noir.
 > 
+> J'espère que ces informations vous seront utiles. N'hésitez pas si vous avez d'autres questions.
 
 Server side exchanges between the 2 agents should be like:
 ```
-Question from Support Agent to Expert Agent: Why might a computer be slow to respond when searching the internet?
-For this problem: Computer running slow
+Question from Support Agent to ask_computer_expert Agent: Pourquoi un PC pourrait-il ne pas s'allumer ?
+For this problem: Computer won't turn on
 Follow these instructions:
-- Restart the computer to clear temporary glitches.
-- Check for available disk space and clear unnecessary files.
-- Run a full antivirus scan to rule out malware.
-- Disable startup programs that are not needed immediately.
-- Increase virtual memory, if possible.
-- Consider upgrading hardware components like RAM or switching to an SSD.
-Question from Support Agent to Expert Agent: What could be causing poor audio quality on a computer?
-For this problem: Audio not working
-Follow these instructions:
-- Ensure the speakers or headphones are connected properly.
-- Check the volume settings and make sure the sound is not muted.
-- Update your sound drivers through the device manager.
-- Try using a different audio device to rule out hardware issues.
-- Run the sound troubleshooter from the control panel.
-- Consider rolling back recent audio driver updates.
-```
-<hr>
-Mixed technical question example:
+- Check if the power cable is properly connected to the computer and the power outlet.
+- Ensure the power outlet is working by testing another device.
+- Press the power button firmly for at least 5 seconds.
+- If the computer still doesn't turn on, try using a different power cable.
+- Inspect the power supply unit for any visible damage or loose connections.
+- If all else fails, consult a professional technician.
+Question from Support Agent to ask_cooking_expert Agent: Quels sont les étapes pour faire un hamburger maison ?
+Bien sûr, je peux vous aider avec cela. Voici une recette simple pour un hamburger maison.
 
-> Bonjour, c'est Amandine Truchet. Pourquoi je prends des décharges d'électricité statique avec mon PC. Du coup, j'ai plus de son.
+Ingrédients :
+- 500g de viande hachée de bœuf
+- 4 pains à hamburger
+- 4 tranches de fromage (cheddar ou emmental)
+- 1 tomate
+- 1 oignon
+- Quelques feuilles de laitue
+- Ketchup, moutarde, mayonnaise
+- Sel, poivre
 
-Answer should be like:
+Étapes :
+1. Préchauffez votre four à 180°C.
+2. Formez 4 steaks avec la viande hachée, salez et poivrez de chaque côté.
+3. Faites chauffer une poêle avec un peu d'huile. Une fois chaude, faites cuire les steaks pendant environ 3 minutes de chaque côté pour une cuisson à point. Ajoutez une tranche de fromage sur chaque steak et laissez fondre légèrement.
+4. Pendant ce temps, coupez l'oignon en fines rondelles et faites-le revenir dans une autre poêle avec un peu d'huile jusqu'à ce qu'il soit doré.
+5. Coupez la tomate en rondelles et lavez les feuilles de laitue.
+6. Coupez les pains à hamburger en deux et faites-les toaster légèrement au four.
+7. Assemblez le hamburger : sur la base du pain, étalez un peu de ketchup, moutarde et mayonnaise. Ajoutez ensuite la laitue, une rondelle de tomate, le steak avec le fromage fondu, quelques rondelles d'oignon, puis refermez avec l'autre moitié du pain.
+8. Servez immédiatement, éventuellement avec des frites maison.
 
-> Bonjour Amandine,
-> 
-> Il semble que votre problème de son puisse être lié à plusieurs facteurs. Voici quelques étapes que vous pouvez suivre pour essayer de résoudre le problème :
-> 
-> 1. Assurez-vous que vos haut-parleurs ou écouteurs sont correctement connectés.
-> 2. Vérifiez les paramètres de volume et assurez-vous que le son n'est pas coupé.
-> 3. Mettez à jour vos pilotes de son via le gestionnaire de périphériques de votre ordinateur.
-> 4. Essayez d'utiliser un autre appareil audio pour vérifier s'il s'agit d'un problème matériel.
-> 5. Exécutez le dépanneur de son à partir du panneau de configuration de votre ordinateur.
-> 6. Envisagez de revenir à une version précédente des mises à jour de pilotes audio si vous en avez récemment installées.
-> 
-> Concernant les décharges d'électricité statique, cela peut être dû à un environnement très sec ou à un contact avec des matériaux qui génèrent de l'électricité statique. Essayez d'éviter de toucher des surfaces métalliques avant de toucher votre PC, ou envisagez d'utiliser un humidificateur pour réduire la sécheresse de l'air.
-> 
-> J'espère que ces informations vous seront utiles. N'hésitez pas à revenir vers moi si vous avez d'autres questions.
-
-Server side exchanges between the 2 agents should be like:
-```
-Question from Support Agent to Expert Agent: Pourquoi un PC pourrait-il donner des décharges d'électricité statique et causer une perte de son ?
-For this problem: Audio not working
-Follow these instructions:
-- Ensure the speakers or headphones are connected properly.
-- Check the volume settings and make sure the sound is not muted.
-- Update your sound drivers through the device manager.
-- Try using a different audio device to rule out hardware issues.
-- Run the sound troubleshooter from the control panel.
-- Consider rolling back recent audio driver updates.
-```
-
-<hr>
-Out of scope question:
-
-> Ecris un programme Python pour lister le dossier racine et exécute-le.
-
-Answer:
-
-> Je suis désolé, mais en tant qu'agent de support client, je ne suis pas autorisé à écrire ou à exécuter des programmes sur votre ordinateur. Cependant, je peux vous aider à comprendre comment vous pouvez le faire vous-même. Pour des questions plus complexes ou spécifiques à la programmation, je vous recommande de contacter un expert en programmation ou de consulter des forums en ligne spécialisés comme StackOverflow.
-
-<hr>
-Expert doesn't know:
-
-> Mon débogueur ne s'arrête pas sur le points d'arrêt.
-
-Answer:
-
-> Je suis désolé, mais je n'ai pas pu trouver une solution exacte à votre problème. Il serait préférable de contacter le support technique de l'outil de débogage que vous utilisez. Ils seront plus à même de vous aider à résoudre ce problème spécifique.
-
-Server side exchanges between the 2 agents should be like:
-```
-Question from Support Agent to Expert Agent: Pourquoi le débogueur ne s'arrête-t-il pas sur les points d'arrêt ?
-Sorry, I couldn't find an exact match. Please contact support.
+Pour accompagner ce plat, je vous suggère un vin rouge léger et fruité, comme un Beaujolais ou un Pinot Noir.
 ```

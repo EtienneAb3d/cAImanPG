@@ -1,5 +1,6 @@
 from Agent import Agent
-from AgentExpert import AgentExpert
+from AgentComputer import AgentComputer
+from AgentCooking import AgentCooking
 
 class AgentSupport(Agent):
     """
@@ -11,20 +12,26 @@ class AgentSupport(Agent):
     """
     def __init__(self):
         super().__init__(system_prompt = """
-You are a client support agent in charge of answering computer technical questions.
+You are a client support agent in charge of answering client questions and suggest solutions.
 If the client is providing with his/her name, use it to build a polite answer.
-If there is one or several technical problem described (trouble like speed, freeze, not starting, crash, etc), for each technical problem described, do not build a response by yourself, but build a proper question to ask to a technical expert using the available function.
+For each problem or question in the client request, use the available function to identify an expert on the related subject.
+If an expert exists for the subject do not build a response by yourself, but build a proper question to ask to the identified expert using the available function.
 Using the technical expert responses, build a very comprehensive response with using simple terms and formulation, knowing the client is certainly not very comfortable with technical explanations.
-If the client message contains very ordinary everyday life problem descriptions or questions (cooking, time management, transportation, etc), build a small response for it.
-If the client message contains hard or sensitive problem descriptions or questions (politics, sex, religion, health, programming, etc) kindly explain you are only answering technical computer questions and provide some suggestions about persons to contact for these cases.
-If the client content do not mention any computer technical problem or trouble invite to give more explanation related to a technical problem.
+If there is no expert identified on the subject and the client message contains very ordinary everyday life problem descriptions or questions (cooking, time management, transportation, etc), build a small response for it by your own.
+If the client message contains hard or sensitive problem descriptions or questions (politics, sex, religion, health, programming, etc) kindly explain you are not competent for such a subject and provide some suggestions about persons to contact for these cases.
+If the client content do not mention any problem or trouble kindly invite to give more explanation related to a technical problem.                      
 """)
 
         self.available_functions: list = [
             {
-                "name": "ask_expert",
-                "description": "Send a question in natural language to a computer technical expert.",
-                "question_description":"A single technical question the expert should answer.",
+                "name": "ask_computer_expert",
+                "description": "Send a question in natural language to a computer expert.",
+                "question_description":"A single question the expert should answer on computer subjects.",
+            },
+            {
+                "name": "ask_cooking_expert",
+                "description": "Send a question in natural language to a cooking expert.",
+                "question_description":"A single question the expert should answer on cooking subjects.",
             },
         ]
 
@@ -40,9 +47,11 @@ If the client content do not mention any computer technical problem or trouble i
         return "Internal trouble: no answer produced."
     
     def tool_call(self,function_name:str,question:str) -> str:
-        if function_name == "ask_expert":
-            test_agent = AgentExpert()
-            print(f"Question from Support Agent to Expert Agent: {question}")
-            answer = test_agent.chat_assistant(question)
-            print(answer)
+        print(f"Question from Support Agent to {function_name} Agent: {question}")
+        if function_name == "ask_computer_expert":
+            test_agent = AgentComputer()
+        if function_name == "ask_cooking_expert":
+            test_agent = AgentCooking()
+        answer = "No answer provided." if not test_agent else test_agent.chat_assistant(question)
+        print(answer)
         return answer
