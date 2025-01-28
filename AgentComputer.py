@@ -4,7 +4,7 @@ from Agent import Agent
 
 class AgentComputer(Agent):
     """
-    The Computer agent is analyzing the request from the first agent to identify a possible known question listed in a FAQ. 
+    The Computer agent is analyzing the request from the Dispatcher agent to identify a possible known question listed in a FAQ. 
     If a known question is identified, it provides with the known procedure to solve the problem.
     """
     def __init__(self):

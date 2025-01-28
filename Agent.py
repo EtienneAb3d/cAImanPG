@@ -8,7 +8,7 @@ llm = "Mistral"
 
 class Agent:
     """
-    The Agent superclass is managing the ChatGPT logic: completion requests with or without functions.
+    The Agent superclass is managing the ChatGPT completion requests logic.
     """
     def __init__(self,system_prompt:str):
         if llm == "Mistral":

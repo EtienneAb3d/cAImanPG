@@ -4,10 +4,8 @@ from AgentDispatcher import AgentDispatcher
 class AgentSupport(Agent):
     """
     The client Support agent is dedicated to a polite communication using very easy to understand explanations. 
-    This agent is analyzing the client request to identify possible technical problems he encounters with his computer 
-    that can be mixed with not technical contents. 
-    It also extracts some informations like the client name. For each technical problem it sends a request 
-    to the second agent to get a procedure to solve the problem.
+    This agent using the Dispatcher agent to analyze the client request to identify possible technical problems he encounters and collect experts tips.
+    It also extracts some informations like the client name to use in its final answer.
     """
     def __init__(self):
         super().__init__(system_prompt = """

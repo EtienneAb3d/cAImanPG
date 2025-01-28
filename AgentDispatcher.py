@@ -6,7 +6,8 @@ from AgentCooking import AgentCooking
 
 class AgentDispatcher(Agent):
     """
-    The Cooking agent is analyzing the request from the first agent to build cooking suggestions.
+    The Dispatcher agent analyzes the client request and identify possible problems he encounters.
+    For each problem or explicite question, the Dispatcher agent identifies a possible known Expert on the related subject, and sends a question to this Expert.
     """
     def __init__(self):
         self.domains = ["Cooking", "Computer", "Other"]

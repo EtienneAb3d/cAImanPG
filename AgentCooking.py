@@ -4,7 +4,7 @@ from Agent import Agent
 
 class AgentCooking(Agent):
     """
-    The Cooking agent is analyzing the request from the first agent to build cooking suggestions.
+    The Cooking agent is analyzing the request from the Dispatcher agent to build cooking suggestions.
     """
     def __init__(self):
         super().__init__(system_prompt = """
