@@ -1,9 +1,9 @@
 ## Description
 
 This is a Python application that simulates an interaction between a client (human) and a technical support system made up of multiple collaborative AI agents:
-- the client **Support** agent is dedicated to a polite communication using very easy to understand explanations. This agent is using the **Dispatcher** agent to analyze the client request and identify possible problems he encounters. For each problem or explicite question, the **Dispatcher** agent identifies a possible known Expert on the related subject, and sends a question to this Expert. The client **Support** agent then usses the Expert tips to build the final comprehensive answer for the client. If no known Expert is identified, it may build a short answer for its own. It also extracts some informations like the client name.
-- the **Computer Expert** agent is analyzing the request from the first agent to identify a possible known question listed in a FAQ. If a known question is identified, it provides with the known procedure to solve the problem.
-- the **Cooking Expert** agent is analyzing the request from the first agent to suggest a recipe, may be a new created one, and suggest a wine with it.
+- the client **Support** agent is dedicated to a polite communication using very easy to understand explanations. This agent is using the **Dispatcher** agent to analyze the client request and identify possible problems he encounters. For each problem or explicite question, the **Dispatcher** agent identifies a possible known Expert on the related subject, and sends a question to this Expert. The client **Support** agent then uses the Expert tips to build the final comprehensive answer for the client. If no known Expert is identified, it may build a short answer by its own. It also extracts some informations like the client name.
+- the **Computer Expert** agent is analyzing the request from the **Dispatcher** agent to identify a possible known question listed in a FAQ. If a known question is identified, it provides with the known procedure to solve the problem.
+- the **Cooking Expert** agent is analyzing the request from the **Dispatcher** agent to suggest a recipe, may be a new created one, and suggest a wine with it.
 
 ## Install dependencies
 ```
