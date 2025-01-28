@@ -77,7 +77,7 @@ Wait for the responses, answer should be like:
 > 
 > Bon appétit !
 
-Server side exchanges between the 2 agents should be like:
+## Server side exchanges between the Dispatcher and the 2 Expert agents
 ```
 Dispatcher:
  [
