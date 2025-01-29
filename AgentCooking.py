@@ -29,5 +29,5 @@ At the end of each recipe, suggest a wine to accompany it.
             
             return answer
         except Exception as e:
-            return self.not_found
+            return f"Internal error '{str(e)}'"
 

@@ -11,8 +11,9 @@ pip install -r requirements.txt
 ```
 
 ## Configuration
-- if you are using the ChatGPT configuration, your must have an ```openai_api_key.txt``` file containing a valid OpenAPI key.
-- if you are using the Mistral intranet configuration, you must have an ```hf_token.txt``` file containing an HugginFace token to an account granted to use the ```mistralai/Mistral-7B-Instruct-v0.3``` model.
+Update the **Config.py** file to define the model you want to use betwwen local intranet "Mistral, "Llama", "DeepSeek", "Lucie" or internet "ChatGPT"
+- if you are using the ChatGPT internet configuration, your must have an ```openai_api_key.txt``` file containing a valid OpenAPI key.
+- if you are using the Mistral or Llama intranet configurations, you must have an ```hf_token.txt``` file containing an HugginFace token to an account granted to use the models.
 
 ## Run the application
 

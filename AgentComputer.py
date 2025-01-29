@@ -37,7 +37,7 @@ class AgentComputer(Agent):
             mapped_question = answer.strip()
             if not mapped_question:
                 return self.not_found
-            mapped_question = re.sub(r'(^.*<|>.*$)',"",mapped_question)
+            mapped_question = re.sub(r'(^.*<|>.*$)',"",mapped_question, flags=re.DOTALL)
             if mapped_question not in known_questions:
                 return self.not_found
             return f"For this problem: {mapped_question}\nFollow these instructions:\n- {"\n- ".join(known_answers[mapped_question])}"

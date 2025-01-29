@@ -41,6 +41,9 @@ If no problem or question is clearly identified in the user's message (greeting,
             if answer == "BlaBla":
                 return dispatch
             try:
+                answer = re.sub(r'^[^\[]*\[',"",answer)
+                answer = re.sub(r'\][^\]]*$',"",answer)
+                answer = f"[{answer}]"
                 qas = json.loads(answer)
                 for index,item in enumerate(qas):
                     domain = item[0]

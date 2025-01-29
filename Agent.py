@@ -1,23 +1,15 @@
 from openai import OpenAI
 from openai.types.chat import ChatCompletionMessageParam
-from Utils import load_api_key
-import json
-
-# May be "Mistral or "ChatGPT"
-llm = "Mistral"
+from Config import get_model
+import re
 
 class Agent:
     """
     The Agent superclass is managing the ChatGPT completion requests logic.
     """
     def __init__(self,system_prompt:str):
-        if llm == "Mistral":
-            self.model = "mistralai/Mistral-7B-Instruct-v0.3"
-            self.openai = OpenAI(base_url='http://localhost:8001/v1', api_key='cubAIx')
-        else:
-            self.model = "gpt-4"
-            self.api_key = load_api_key('openai_api_key.txt')
-            self.openai = OpenAI(api_key=self.api_key)
+        self.model_familly,self.model,self.url,self.api_key = get_model()
+        self.openai = OpenAI(base_url=self.url, api_key=self.api_key)
         self.system_prompt: str = system_prompt
         self.messages: list[ChatCompletionMessageParam] = []
 
@@ -44,7 +36,9 @@ class Agent:
             self.messages.append(answer)
 
             if answer.content is not None:
-                return answer.content
+                # Remove DeepSeek <think>
+                filtered = re.sub(r"<think>.*</think>\n*","",answer.content, flags=re.DOTALL).strip()
+                return filtered
     
     def tool_call(self,function_name:str,question:str) -> str:
         return None
