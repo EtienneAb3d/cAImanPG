@@ -31,7 +31,7 @@ make run
 Open the web chat interface:
 http://127.0.0.1:8000/
 
-![image](https://github.com/user-attachments/assets/3565b667-f4ff-4446-a097-362c559eb123)
+![image](https://github.com/user-attachments/assets/7e8fd2c2-8ede-4308-8937-e1768a1f0a77)
 
 Enter something like:
 
