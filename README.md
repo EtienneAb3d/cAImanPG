@@ -9,7 +9,8 @@ This is an initial basis for quickly targeting the differences between LLMs in t
 - the **Computer Expert** agent is analyzing the request from the **Dispatcher** agent to identify a possible known question listed in a FAQ. If a known question is identified, it provides with the known procedure to solve the problem.
 - the **Cooking Expert** agent is analyzing the request from the **Dispatcher** agent to suggest a recipe, may be a new created one, and suggest a wine with it.
 
-![cAImanPG-logic](https://github.com/user-attachments/assets/84dc6db2-4bc5-4a52-a2cb-64870178dd97)
+![cAImanPG-logic](https://github.com/user-attachments/assets/6bee2747-c2d7-42b9-8df8-8489040b1cea)
+
 
 ## Install dependencies
 ```
