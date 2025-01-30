@@ -2,6 +2,8 @@
 
 **cAImanPG** is a fun pre-configured Collaborative AI multi-agent Playground, enabling the comparison of LLMs running locally on your Intranet such as "Mistral", "Llama", "Falcon", "DeepSeek", "Lucie" or remotely on the Internet such as "ChatGPT" on various explicit or implicit combined tasks such as cooking recipe suggestion/creation, semantic sentence matching, human query decomposition, reformulation, summarization, translation, etc.
 
+This is an initial basis for quickly targeting the differences between LLMs in terms of quality of results, accuracy of responses, ability to format structured data, etc.
+
 **cAImanPG** is a Python application that simulates an interaction between a client (human) and a technical support system made up of multiple collaborative AI agents:
 - the client **Support** agent is dedicated to a polite communication using very easy to understand explanations. This agent is using the **Dispatcher** agent to analyze the client request and identify possible problems he encounters. For each problem or explicite question, the **Dispatcher** agent identifies a possible known Expert on the related subject, and sends a question to this Expert. The client **Support** agent then uses the Expert tips to build the final comprehensive answer for the client. If no known Expert is identified, it may build a short answer by its own. It also extracts some informations like the client name.
 - the **Computer Expert** agent is analyzing the request from the **Dispatcher** agent to identify a possible known question listed in a FAQ. If a known question is identified, it provides with the known procedure to solve the problem.
