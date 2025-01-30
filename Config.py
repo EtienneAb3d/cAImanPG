@@ -1,5 +1,5 @@
 # May be local intranet "Mistral, "Llama", "DeepSeek", "Lucie" or internet "ChatGPT"
-llm = "Falcon"
+llm = "Mistral"
 def get_model():
         if llm == "Mistral":
             return llm,"meta-llama/Meta-Llama-3-8B-Instruct",'http://localhost:8001/v1', 'cubAIx'

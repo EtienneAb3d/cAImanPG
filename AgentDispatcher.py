@@ -10,7 +10,7 @@ class AgentDispatcher(Agent):
     For each problem or explicite question, the Dispatcher agent identifies a possible known Expert on the related subject, and sends a question to this Expert.
     """
     def __init__(self):
-        self.domains = ["Cooking", "Computer", "Other"]
+        self.domains = ["Cooking", "Computer", "Others"]
         system_prompt = """
 Write a JSON string listing each problem or question identified in the user's message.
 Only one line per question or problem identified.
@@ -41,13 +41,14 @@ If no problem or question is clearly identified in the user's message (greeting,
             if answer == "BlaBla":
                 return dispatch
             try:
-                answer = re.sub(r'^[^\[]*\[',"",answer)
-                answer = re.sub(r'\][^\]]*$',"",answer)
-                answer = f"[{answer}]"
+                answer = re.sub(r'^[^\[]*\[',"",answer) # Unwanted introduction
+                answer = re.sub(r'\][^\]]*$',"",answer) # Unwanted final formatting
+                answer = f"[{answer}]" # Add back removed brackets
+                answer = re.sub(r'[“”]',"\"",answer) # Possible bad quotes
                 qas = json.loads(answer)
                 for index,item in enumerate(qas):
                     domain = item[0]
-                    if domain == "Other" or domain not in self.domains:
+                    if domain == "Others" or domain not in self.domains:
                         # Ignore
                         continue
 

@@ -29,7 +29,7 @@ If the client content do not mention any problem or trouble, write a very short 
         dispatch = dispatcher.dispatch(user_question=user_question)
         if dispatch:
             for disp in dispatch:
-                q_lines.append(f"\n*** {disp[0]} Expert Tip***")
+                q_lines.append(f"\n### Private {disp[0]} Expert Tip ###")
                 q_lines.append(disp[1])
  
         answer = super().chat_assistant(question="\n".join(q_lines))
