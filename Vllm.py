@@ -3,13 +3,19 @@ from Config import load_hf_token,get_model
 import subprocess
 import time
 
-os.environ["HF_TOKEN"] = load_hf_token("hf_token.txt")
+try:
+    os.environ["HF_TOKEN"] = load_hf_token("hf_token.txt")
+except Exception as e:
+    print(f"Can't load hf_token.txt: {str(e)}")
 
 
-# This configuration is ok to run with 2 RTX 3060 with 12G Video-RAM each
 model_familly,model,url,api_key = get_model()
 commands = [
+    # May need to remove locks from a previously interrupted download: 
+    # rm -rf ~/.cache/huggingface/hub/.locks/*
+    # May need to add '--force-download' option after a bad download
     f"huggingface-cli download {model}",
+    # This 'vllm serve' configuration is ok to run with 2 RTX 3060 with 12G Video-RAM each
     f"vllm serve {model} --port 8001 --dtype float16 --api-key 'cubAIx' --tensor-parallel-size 2 --max_model_len 8192",
     ]
 
