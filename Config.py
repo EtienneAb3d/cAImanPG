@@ -1,4 +1,4 @@
-# May be local intranet "Mistral, "Llama", "DeepSeek", "Lucie" or internet "ChatGPT"
+# May be local intranet "Mistral, "Llama", "DeepSeek", "Qwen", "Lucie" or internet "ChatGPT"
 llm = "Mistral"
 def get_model():
         if llm == "Mistral":
@@ -7,6 +7,8 @@ def get_model():
             return llm,"mistralai/Mistral-7B-Instruct-v0.3",'http://localhost:8001/v1', 'cubAIx'
         elif llm == "DeepSeek":
             return llm,"deepseek-ai/DeepSeek-R1-Distill-Llama-8B",'http://localhost:8001/v1', 'cubAIx'
+        elif llm == "Qwen":
+            return llm,"Qwen/Qwen2.5-7B-Instruct",'http://localhost:8001/v1', 'cubAIx'
         elif llm == "Falcon":
             return llm,"tiiuae/Falcon3-7B-Instruct",'http://localhost:8001/v1', 'cubAIx'
         elif llm == "Lucie":

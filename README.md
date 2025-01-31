@@ -1,6 +1,6 @@
 ## Description
 
-**cAImanPG** is a fun pre-configured Collaborative AI multi-agent Playground, enabling the comparison of LLMs running locally on your Intranet such as "Mistral", "Llama", "Falcon", "DeepSeek", "Lucie" or remotely on the Internet such as "ChatGPT" on various explicit or implicit combined tasks such as cooking recipe suggestion/creation, semantic sentence matching, human query decomposition, reformulation, summarization, translation, etc.
+**cAImanPG** is a fun pre-configured Collaborative AI multi-agent Playground, enabling the comparison of LLMs running locally on your Intranet such as "Mistral", "Llama", "Falcon", "DeepSeek", "Qwen", "Lucie" or remotely on the Internet such as "ChatGPT" on various explicit or implicit combined tasks such as cooking recipe suggestion/creation, semantic sentence matching, human query decomposition, reformulation, summarization, translation, etc.
 
 This is an initial basis for quickly targeting the differences between LLMs in terms of quality of results, accuracy of responses, ability to follow instructions precisely, ability to format structured data, etc.
 
@@ -19,7 +19,7 @@ pip install -r requirements.txt
 
 ## Configuration
 
-Update the **Config.py** file to define the model you want to use between LLMs running locally on your Intranet such as "Mistral", "Llama", "Falcon", "DeepSeek", "Lucie" or remotely on the Internet such as "ChatGPT".
+Update the **Config.py** file to define the model you want to use between LLMs running locally on your Intranet such as "Mistral", "Llama", "Falcon", "DeepSeek", "Qwen", "Lucie" or remotely on the Internet such as "ChatGPT".
 - if you are using the ChatGPT internet configuration, your must have an ```openai_api_key.txt``` file containing a valid OpenAPI key.
 - if you are using the Mistral or Llama intranet configurations, you must have an ```hf_token.txt``` file containing an HugginFace token to an account granted to use the models.
 
