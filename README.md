@@ -142,3 +142,7 @@ Enjoy your French-style gourmet hamburger!
 
 #### All dispatches done ####
 ```
+<hr>
+This tool is a demonstration of our know-how.<br/>
+If you are interested in a commercial/industrial AI linguistic project, contact us:<br/>
+https://cubaix.com
